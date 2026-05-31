@@ -1,0 +1,55 @@
+# NegotiAI — local dev orchestration.
+#
+# Database: NOT defined here. Reuse a Postgres already running on the host
+# (postgres:16, :5432) with a dedicated database "negotiai". Services reach it via
+# host.docker.internal:5432. Set DATABASE_URL in .env.
+#
+# Host ports (override in .env to avoid conflicts):
+#   frontend 3200 · backend 8090 · agent 8000
+
+services:
+  frontend:
+    build: ./frontend
+    container_name: negotiai-frontend
+    ports:
+      - "3200:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules # keep the image's Linux node_modules (incl. sharp)
+      - ./assets:/raw-assets:ro # raw packs for `npm run assets:build` in-container
+    environment:
+      - WATCHPACK_POLLING=true # reliable HMR on macOS bind mounts
+      - RAW_ASSETS_DIR=/raw-assets
+      - NEXT_PUBLIC_BACKEND_URL=http://localhost:8090
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+
+  backend:
+    build: ./backend
+    container_name: negotiai-backend
+    ports:
+      - "8090:8080"
+    env_file: [.env]
+    environment:
+      - UPLOAD_DIR=/data/uploads
+    volumes:
+      - ./data/uploads:/data/uploads
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+
+  agent:
+    build: ./agent
+    container_name: negotiai-agent
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./agent:/app
+    env_file: [.env]
+    environment:
+      - NEGOTIAI_BRAIN=${NEGOTIAI_BRAIN:-bedrock}
+      - BACKEND_INTERNAL_URL=http://backend:8080
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped

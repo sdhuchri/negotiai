@@ -1,0 +1,245 @@
+{
+  "frameH": 256,
+  "fps": 14,
+  "characters": [
+    {
+      "key": "penguin",
+      "label": "Pinguin",
+      "biome": "snowy",
+      "states": {
+        "idle": {
+          "src": "/characters/penguin/idle.webp",
+          "frameW": 400,
+          "frames": 14
+        },
+        "counter": {
+          "src": "/characters/penguin/counter.webp",
+          "frameW": 400,
+          "frames": 14
+        },
+        "aggressive": {
+          "src": "/characters/penguin/aggressive.webp",
+          "frameW": 400,
+          "frames": 14
+        },
+        "escalate": {
+          "src": "/characters/penguin/escalate.webp",
+          "frameW": 400,
+          "frames": 14
+        },
+        "deal": {
+          "src": "/characters/penguin/deal.webp",
+          "frameW": 400,
+          "frames": 14
+        },
+        "walkaway": {
+          "src": "/characters/penguin/walkaway.webp",
+          "frameW": 400,
+          "frames": 14
+        }
+      }
+    },
+    {
+      "key": "capybara",
+      "label": "Kapibara",
+      "biome": "nature",
+      "states": {
+        "idle": {
+          "src": "/characters/capybara/idle.webp",
+          "frameW": 400,
+          "frames": 14
+        },
+        "counter": {
+          "src": "/characters/capybara/counter.webp",
+          "frameW": 400,
+          "frames": 14
+        },
+        "aggressive": {
+          "src": "/characters/capybara/aggressive.webp",
+          "frameW": 400,
+          "frames": 14
+        },
+        "escalate": {
+          "src": "/characters/capybara/escalate.webp",
+          "frameW": 400,
+          "frames": 14
+        },
+        "deal": {
+          "src": "/characters/capybara/deal.webp",
+          "frameW": 400,
+          "frames": 14
+        },
+        "walkaway": {
+          "src": "/characters/capybara/walkaway.webp",
+          "frameW": 400,
+          "frames": 14
+        }
+      }
+    },
+    {
+      "key": "panda",
+      "label": "Panda",
+      "biome": "mountain",
+      "states": {
+        "idle": {
+          "src": "/characters/panda/idle.webp",
+          "frameW": 400,
+          "frames": 14
+        },
+        "counter": {
+          "src": "/characters/panda/counter.webp",
+          "frameW": 400,
+          "frames": 14
+        },
+        "aggressive": {
+          "src": "/characters/panda/aggressive.webp",
+          "frameW": 400,
+          "frames": 14
+        },
+        "escalate": {
+          "src": "/characters/panda/escalate.webp",
+          "frameW": 400,
+          "frames": 14
+        },
+        "deal": {
+          "src": "/characters/panda/deal.webp",
+          "frameW": 400,
+          "frames": 14
+        },
+        "walkaway": {
+          "src": "/characters/panda/walkaway.webp",
+          "frameW": 400,
+          "frames": 14
+        }
+      }
+    },
+    {
+      "key": "racoon",
+      "label": "Rakun",
+      "biome": "nature",
+      "states": {
+        "idle": {
+          "src": "/characters/racoon/idle.webp",
+          "frameW": 400,
+          "frames": 14
+        },
+        "counter": {
+          "src": "/characters/racoon/counter.webp",
+          "frameW": 400,
+          "frames": 14
+        },
+        "aggressive": {
+          "src": "/characters/racoon/aggressive.webp",
+          "frameW": 400,
+          "frames": 14
+        },
+        "escalate": {
+          "src": "/characters/racoon/escalate.webp",
+          "frameW": 400,
+          "frames": 14
+        },
+        "deal": {
+          "src": "/characters/racoon/deal.webp",
+          "frameW": 400,
+          "frames": 14
+        },
+        "walkaway": {
+          "src": "/characters/racoon/walkaway.webp",
+          "frameW": 400,
+          "frames": 14
+        }
+      }
+    },
+    {
+      "key": "bunny",
+      "label": "Kelinci",
+      "biome": "mountain",
+      "states": {
+        "idle": {
+          "src": "/characters/bunny/idle.webp",
+          "frameW": 400,
+          "frames": 14
+        },
+        "counter": {
+          "src": "/characters/bunny/counter.webp",
+          "frameW": 400,
+          "frames": 14
+        },
+        "aggressive": {
+          "src": "/characters/bunny/aggressive.webp",
+          "frameW": 400,
+          "frames": 14
+        },
+        "escalate": {
+          "src": "/characters/bunny/escalate.webp",
+          "frameW": 400,
+          "frames": 14
+        },
+        "deal": {
+          "src": "/characters/bunny/deal.webp",
+          "frameW": 400,
+          "frames": 14
+        },
+        "walkaway": {
+          "src": "/characters/bunny/walkaway.webp",
+          "frameW": 400,
+          "frames": 14
+        }
+      }
+    },
+    {
+      "key": "chicken",
+      "label": "Ayam",
+      "biome": "nature",
+      "states": {
+        "idle": {
+          "src": "/characters/chicken/idle.webp",
+          "frameW": 400,
+          "frames": 14
+        },
+        "counter": {
+          "src": "/characters/chicken/counter.webp",
+          "frameW": 400,
+          "frames": 14
+        },
+        "aggressive": {
+          "src": "/characters/chicken/aggressive.webp",
+          "frameW": 400,
+          "frames": 14
+        },
+        "escalate": {
+          "src": "/characters/chicken/escalate.webp",
+          "frameW": 400,
+          "frames": 14
+        },
+        "deal": {
+          "src": "/characters/chicken/deal.webp",
+          "frameW": 400,
+          "frames": 14
+        },
+        "walkaway": {
+          "src": "/characters/chicken/walkaway.webp",
+          "frameW": 400,
+          "frames": 14
+        }
+      }
+    }
+  ],
+  "backgrounds": [
+    {
+      "key": "snowy",
+      "label": "Bersalju",
+      "src": "/backgrounds/snowy.webp"
+    },
+    {
+      "key": "nature",
+      "label": "Hutan",
+      "src": "/backgrounds/nature.webp"
+    },
+    {
+      "key": "mountain",
+      "label": "Gunung",
+      "src": "/backgrounds/mountain.webp"
+    }
+  ]
+}

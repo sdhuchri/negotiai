@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Playful & colorful light theme — bright base with soft sky/teal/amber glows. */
+body {
+  background:
+    radial-gradient(55rem 55rem at 100% -10%, rgba(56, 189, 248, 0.20), transparent 60%),
+    radial-gradient(45rem 45rem at -10% 5%, rgba(45, 212, 191, 0.18), transparent 55%),
+    radial-gradient(42rem 42rem at 50% 118%, rgba(251, 191, 36, 0.12), transparent 60%),
+    #f4f9ff;
+  background-attachment: fixed;
+  color: #0f172a; /* slate-900 */
+  min-height: 100vh;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Sprite-sheet flipbook: element shows one frame; steps() snaps across the strip.
+   Each instance sets --sprite-end inline = -(displayWidth * frameCount)px. */
+@keyframes negotiai-sprite {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: var(--sprite-end) 0;
+  }
+}
+
+/* Slow ambient drift for the stage backdrop (subtle parallax feel without layers). */
+@keyframes negotiai-bg-drift {
+  from {
+    background-position: center;
+  }
+  to {
+    background-position: 52% center;
+  }
+}
+
+/* gentle float for playful accents */
+@keyframes negotiai-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}

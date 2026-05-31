@@ -1,0 +1,12 @@
+# NegotiAI agent service — Python + LangGraph + Bedrock
+langgraph>=0.3,<0.7
+langchain-aws>=0.2,<0.3
+langchain-core>=0.3,<0.4
+fastapi>=0.115
+uvicorn[standard]>=0.30
+pydantic>=2.7
+boto3>=1.34
+python-dotenv>=1.0
+pytest>=8.0
+# PostgresSaver checkpoint is added when we wire interrupt/resume across services:
+# langgraph-checkpoint-postgres>=2.0 ; psycopg[binary]>=3.2

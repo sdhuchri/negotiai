@@ -1,0 +1,33 @@
+# Raw CraftPix asset packs — too large for git (~1.45 GB) and licensed source.
+# Processed output lives in frontend/public/characters + /backgrounds (committed, ~2.6 MB).
+/assets/
+
+# env
+.env
+.env.local
+*.env.local
+
+# node
+node_modules/
+npm-debug.log*
+
+# next
+frontend/.next/
+frontend/out/
+frontend/next-env.d.ts
+
+# go (backend, later)
+backend/bin/
+
+# uploaded intake files (runtime)
+/data/
+
+# python (agent)
+__pycache__/
+.pytest_cache/
+agent/.venv/
+*.pyc
+
+# os / editor
+.DS_Store
+*.log
