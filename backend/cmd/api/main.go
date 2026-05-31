@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
@@ -22,6 +23,18 @@ func env(key, def string) string {
 		return v
 	}
 	return def
+}
+
+// allowedOrigins reads a comma-separated ALLOWED_ORIGINS (frontend public URLs).
+func allowedOrigins() []string {
+	raw := env("ALLOWED_ORIGINS", "http://localhost:3200,http://localhost:3000,http://127.0.0.1:3200")
+	var out []string
+	for _, p := range strings.Split(raw, ",") {
+		if s := strings.TrimSpace(p); s != "" {
+			out = append(out, s)
+		}
+	}
+	return out
 }
 
 func main() {
@@ -50,7 +63,7 @@ func main() {
 	r.Use(middleware.Recoverer)
 	// No global timeout: the SSE stream is long-lived.
 	r.Use(cors.Handler(cors.Options{
-		AllowedOrigins:   []string{"http://localhost:3200", "http://localhost:3000", "http://127.0.0.1:3200"},
+		AllowedOrigins:   allowedOrigins(),
 		AllowedMethods:   []string{"GET", "POST", "OPTIONS"},
 		AllowedHeaders:   []string{"Content-Type", "Authorization"},
 		AllowCredentials: false,

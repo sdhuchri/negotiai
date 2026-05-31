@@ -1,0 +1,15 @@
+# Dev image for the Next.js frontend (used by docker-compose, hot reload).
+FROM node:24-slim
+
+WORKDIR /app
+
+# Install deps first for better layer caching.
+COPY package.json package-lock.json* ./
+RUN npm install
+
+# Source is bind-mounted in dev (see docker-compose).
+COPY . .
+
+EXPOSE 3000
+
+CMD ["npm", "run", "dev"]

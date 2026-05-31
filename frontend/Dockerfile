@@ -1,18 +1,28 @@
-# Dev image for the Next.js frontend (Turbopack dev server).
-# Debian-slim (glibc) for reliable sharp prebuilt binaries.
-FROM node:24-slim
-
+# Production image for Railway (Next.js standalone). docker-compose dev uses Dockerfile.dev.
+FROM node:24-slim AS deps
 WORKDIR /app
-
-# Install deps first for better layer caching.
 COPY package.json package-lock.json* ./
-RUN npm install
+RUN npm ci || npm install
 
-# Source is bind-mounted in dev (see docker-compose); this COPY is a fallback
-# for standalone builds.
+FROM node:24-slim AS build
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+# NEXT_PUBLIC_* is inlined at build time. Railway passes service variables as build args.
+ARG NEXT_PUBLIC_BACKEND_URL
+ENV NEXT_PUBLIC_BACKEND_URL=$NEXT_PUBLIC_BACKEND_URL
+ENV NEXT_TELEMETRY_DISABLED=1
+RUN npm run build
 
+FROM node:24-slim AS runner
+WORKDIR /app
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
+# Bind IPv6 (::) so Railway's networking (public + private) can reach it; PORT is injected.
+ENV HOSTNAME="::"
+ENV PORT=3000
+COPY --from=build /app/public ./public
+COPY --from=build /app/.next/standalone ./
+COPY --from=build /app/.next/static ./.next/static
 EXPOSE 3000
-
-# -H 0.0.0.0 so the container port is reachable from the host mapping.
-CMD ["npm", "run", "dev"]
+CMD ["node", "server.js"]

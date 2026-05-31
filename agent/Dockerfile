@@ -10,4 +10,6 @@ COPY . .
 
 EXPOSE 8000
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Shell form so $PORT expands; bind :: (IPv6) for Railway private networking
+# (also accepts IPv4-mapped, so docker-compose dev keeps working).
+CMD uvicorn app.main:app --host :: --port ${PORT:-8000}
